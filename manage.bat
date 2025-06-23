@@ -31,27 +31,29 @@ REM Fonction pour afficher le menu
 echo 🔧 Que voulez-vous faire ?
 echo.
 echo [1] 🏗️  Installation et configuration initiale
-echo [2] 🧪 Tester le bot localement
-echo [3] 🚀 Déployer sur Raspberry Pi
-echo [4] 📢 Créer une présentation Discord
-echo [5] 🔄 Mettre à jour les dépendances
-echo [6] 📋 Déployer les commandes slash
-echo [7] ▶️  Démarrer le bot
-echo [8] 📊 Voir les logs
-echo [9] ❓ Aide et documentation
+echo [2] 🔍 Vérifier la configuration
+echo [3] 🧪 Tester le bot localement
+echo [4] 🚀 Déployer sur Raspberry Pi
+echo [5] 📢 Créer une présentation Discord
+echo [6] 🔄 Mettre à jour les dépendances
+echo [7] 📋 Déployer les commandes slash
+echo [8] ▶️  Démarrer le bot
+echo [9] 📊 Voir les logs
+echo [A] ❓ Aide et documentation
 echo [0] 🚪 Quitter
 echo.
-set /p choice="Votre choix (0-9): "
+set /p choice="Votre choix (0-9, A): "
 
 if "%choice%"=="1" goto install
-if "%choice%"=="2" goto test
-if "%choice%"=="3" goto deploy
-if "%choice%"=="4" goto presentation
-if "%choice%"=="5" goto update
-if "%choice%"=="6" goto commands
-if "%choice%"=="7" goto start
-if "%choice%"=="8" goto logs
-if "%choice%"=="9" goto help
+if "%choice%"=="2" goto check
+if "%choice%"=="3" goto test
+if "%choice%"=="4" goto deploy
+if "%choice%"=="5" goto presentation
+if "%choice%"=="6" goto update
+if "%choice%"=="7" goto commands
+if "%choice%"=="8" goto start
+if "%choice%"=="9" goto logs
+if /i "%choice%"=="A" goto help
 if "%choice%"=="0" goto exit
 echo ❌ Choix invalide
 goto menu
@@ -93,6 +95,23 @@ if not exist "database" mkdir database
 if not exist "logs" mkdir logs
 
 echo ✅ Installation terminée !
+echo.
+pause
+goto menu
+
+:check
+echo.
+echo 🔍 Vérification de la configuration...
+echo.
+call node check-config.js
+echo.
+echo Voulez-vous tester la connexion Discord ? (O/n)
+set /p testconn=
+if /i "!testconn!"=="O" (
+    call node check-config.js --test-connection
+) else if /i "!testconn!"=="" (
+    call node check-config.js --test-connection
+)
 echo.
 pause
 goto menu

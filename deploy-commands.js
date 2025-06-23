@@ -6,6 +6,26 @@ require('dotenv').config();
 const Logger = require('./src/utils/Logger');
 
 async function deployCommands() {
+    // Vérifier les variables d'environnement
+    if (!process.env.DISCORD_TOKEN) {
+        Logger.error('❌ DISCORD_TOKEN manquant dans le fichier .env');
+        Logger.info('💡 Ajoutez votre token Discord dans le fichier .env');
+        process.exit(1);
+    }
+
+    if (!process.env.CLIENT_ID) {
+        Logger.error('❌ CLIENT_ID manquant dans le fichier .env');
+        Logger.info('💡 CLIENT_ID est l\'ID de votre application Discord (Application ID)');
+        Logger.info('💡 Trouvez-le sur https://discord.com/developers/applications');
+        process.exit(1);
+    }
+
+    if (!process.env.GUILD_ID && process.env.NODE_ENV !== 'production') {
+        Logger.error('❌ GUILD_ID manquant dans le fichier .env');
+        Logger.info('💡 GUILD_ID est l\'ID de votre serveur Discord');
+        process.exit(1);
+    }
+
     const commands = [];
     const commandsPath = path.join(__dirname, 'src', 'commands');
     const commandFolders = fs.readdirSync(commandsPath);
