@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const DatabaseService = require('./services/DatabaseService');
 const StarCitizenService = require('./services/StarCitizenService');
+const DataUpdateService = require('./services/DataUpdateService');
 const Logger = require('./utils/Logger');
 
 class StarCitizenBot {
@@ -24,9 +25,7 @@ class StarCitizenBot {
         this.initializeServices();
         this.loadCommands();
         this.setupEventHandlers();
-    }
-
-    async initializeServices() {
+    }    async initializeServices() {
         try {
             // Initialiser la base de données
             await DatabaseService.initialize();
@@ -35,6 +34,10 @@ class StarCitizenBot {
             // Initialiser le service Star Citizen
             await StarCitizenService.initialize();
             Logger.info('Service Star Citizen initialisé');
+
+            // Initialiser le service de mise à jour des données
+            this.dataUpdateService = new DataUpdateService();
+            Logger.info('Service de mise à jour des données initialisé');
 
             // Démarrer les tâches périodiques
             this.startPeriodicTasks();
@@ -67,10 +70,13 @@ class StarCitizenBot {
         }
     }
 
-    setupEventHandlers() {
-        this.client.once('ready', () => {
+    setupEventHandlers() {        this.client.once('ready', () => {
             Logger.info(`Bot connecté en tant que ${this.client.user.tag}`);
             this.client.user.setActivity('Star Citizen - /help', { type: 'PLAYING' });
+            
+            // Démarrer les mises à jour automatiques
+            this.dataUpdateService.startAutoUpdate();
+            Logger.info('🔄 Service de mise à jour automatique démarré');
         });
 
         this.client.on('interactionCreate', async (interaction) => {

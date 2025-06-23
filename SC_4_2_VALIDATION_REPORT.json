@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-06-23T22:59:43.819Z",
+  "version": "2.0.1",
+  "star_citizen_version": "4.2",
+  "status": "SC_4_2_COMPATIBLE",
+  "availability": 60,
+  "sc42_compatibility": 100,
+  "results": {
+    "available": 3,
+    "unavailable": 2,
+    "sc42_compatible": 2,
+    "tests": [
+      {
+        "name": "fleetyards",
+        "status": "available",
+        "code": 200,
+        "url": "https://api.fleetyards.net/v1"
+      },
+      {
+        "name": "uex",
+        "status": "available",
+        "code": 200,
+        "url": "https://api.uexcorp.space/2.0"
+      },
+      {
+        "name": "scapi",
+        "status": "unavailable",
+        "error": "getaddrinfo ENOTFOUND api.sc-api.com",
+        "url": "https://api.sc-api.com/v1"
+      },
+      {
+        "name": "erkul",
+        "status": "unavailable",
+        "error": "Request failed with status code 418",
+        "url": "https://api.erkul.games"
+      },
+      {
+        "name": "scunpacked",
+        "status": "available",
+        "code": 200,
+        "url": "https://scunpacked.com/api"
+      }
+    ]
+  }
+}

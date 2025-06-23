@@ -1,11 +1,124 @@
+# Dependencies
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables - DONNÉES SENSIBLES
 .env
-*.log
+.env.local
+.env.production
+.env.backup
+.env.pi
+.env.example.backup
+
+# Tokens et clés API - PROTECTION CRITIQUE
+token.txt
+api-keys.txt
+secrets.json
+config.json
+
+# Database files - DONNÉES UTILISATEUR
 *.sqlite
+*.sqlite3
 *.db
-.DS_Store
-Thumbs.db
 database/*.db
+database/backup/
+database/users.db
+database/guilds.db
+
+# Logs - DONNÉES PRIVÉES
+*.log
+logs/
 temp/
+debug.log
+error.log
+
+# Fichiers de données générés automatiquement
+*_updated.json
+ships_updated.json
+components_updated.json
+stations_updated.json
+commodities_updated.json
+shops_updated.json
+hangars_updated.json
+locations_updated.json
+data/cache/
+data/temp/
+data/backup/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Coverage reports
 coverage/
+.nyc_output/
+
+# Runtime files
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+
+# Bot specific - DONNÉES SENSIBLES DU BOT
+bot.db
+exclude-list.txt
+.env.backup
+user-data/
+guild-configs/
+admin-logs/
+private-configs/
+
+# Fichiers de sauvegarde automatique
+backup_*.json
+backup_*.db
+*.backup
+
+# Fichiers temporaires du bot
+temp_*.json
+cache_*.json
+session_*.json
+
+# Données utilisateur Discord - PROTECTION RGPD
+user_profiles.json
+guild_settings.json
+message_logs/
+user_stats.json
+
+# Clés et tokens spécifiques
+discord_token.txt
+huggingface_token.txt
+api_credentials.json
+
+# Fichiers de test avec vraies données
+test_results_*.json
+debug_*.json
+diagnostic_*.json
+
+# Fichiers de sécurité (peuvent contenir des infos sensibles)
+SECURITY_CHECK_PRIVATE.md
+security_audit_*.json
+vulnerability_report_*.json

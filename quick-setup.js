@@ -23,7 +23,7 @@ const config = {
     NODE_ENV: 'development',
     BOT_PREFIX: '!',
     UPDATE_INTERVAL: '3600000',
-    STARCITIZEN_API_URL: 'https://api.star-citizen.wiki',
+    STARCITIZEN_API_URL: 'https://api.starcitizen-api.com',
     ERKUL_API_URL: 'https://www.erkul.games',
     UPDATES_CHANNEL_ID: '',
     LOGS_CHANNEL_ID: '',

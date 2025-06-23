@@ -1,12 +1,24 @@
 {
-  "name": "star-citizen-discord-bot",
-  "version": "1.0.0",
-  "description": "Bot Discord pour Star Citizen - Méta PvP/PvE, builds et informations sur les vaisseaux",
-  "main": "src/index.js",
-  "scripts": {
+  "name": "cityzenbot",
+  "version": "2.1.0",
+  "description": "Bot Discord ultime pour Star Citizen - IA intégrée, APIs officielles SC-Open.dev, méta PvP/PvE",
+  "main": "src/index.js",  "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
-  },  "dependencies": {
+    "dev": "nodemon src/index.js",    "test": "node test.js",
+    "test-ai": "node test-ai-spectrum.js",
+    "setup": "node quick-setup.js",
+    "setup-ai": "node setup-huggingface-api.js",
+    "check": "node check-config.js",
+    "diagnose-db": "node diagnose-db.js",
+    "diagnose-apis": "node diagnose-apis.js",    "deploy": "node deploy-commands.js",
+    "update-data": "node update-data.js",
+    "update-data-force": "node update-data.js --force",
+    "post-presentation": "node post-presentation.js",
+    "prepare-release": "node prepare-release.js",
+    "final-validation": "node final-validation.js",    "validate-sc-4.2": "node validate-sc-4.2.js",
+    "lint": "echo 'Linting would run here'",
+    "clean": "rm -rf node_modules package-lock.json && npm install"
+  },"dependencies": {
     "discord.js": "^14.14.1",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
@@ -15,16 +27,30 @@
     "node-cron": "^3.0.3"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
-  },
+    "nodemon": "^3.0.2"  },
   "keywords": [
     "discord",
     "bot",
     "star-citizen",
     "gaming",
     "pvp",
-    "pve"
+    "pve",
+    "builds",
+    "ships",
+    "trading",
+    "raspberry-pi"
   ],
-  "author": "CityZenBot",
-  "license": "MIT"
+  "author": "CityZenBot Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/cityzenbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/cityzenbot/issues"
+  },
+  "homepage": "https://github.com/your-username/cityzenbot#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  }
 }
